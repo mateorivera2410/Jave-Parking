@@ -7,10 +7,9 @@ body:
   type: json
   content: |-
     {
-      "id": "1234567890",
-      "name": "Usuario de prueba",
-      "email": "prueba@seed.local",
-      "age": 25,
-      "phone": "+573101234567"
+      "id": "12345678",
+      "name": "Mateo Rivera",
+      "email": "mateo@test.com",
+      "phone": "3001234567"
     }
 order: 1000
