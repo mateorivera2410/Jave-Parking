@@ -1,0 +1,7 @@
+$kind: http-request
+url: "{{baseUrl}}/orders?status=PENDING&userId={{userId}}"
+method: GET
+queryParams:
+  status: PENDING
+  userId: "{{userId}}"
+order: 11000

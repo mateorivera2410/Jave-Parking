@@ -1,0 +1,13 @@
+$kind: http-request
+url: "{{baseUrl}}/users/{{userId}}"
+method: PUT
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "name": "Usuario de prueba actualizado",
+      "age": 26
+    }
+order: 4000

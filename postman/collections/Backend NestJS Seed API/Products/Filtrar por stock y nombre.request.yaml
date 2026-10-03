@@ -1,0 +1,8 @@
+$kind: http-request
+url: "{{baseUrl}}/products?name=prote&minStock=10&maxStock=100"
+method: GET
+queryParams:
+  name: prote
+  minStock: "10"
+  maxStock: "100"
+order: 8000

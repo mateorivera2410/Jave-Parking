@@ -1,0 +1,7 @@
+$kind: collection
+description: "Colección didáctica. Rama 1: Users. Rama 2: + Products. Rama 3: + Orders con relaciones. Rama 4: + Filtros simples vía query params (QueryBuilder). Usa variables baseUrl, userId, productId, orderId. BaseUrl http://localhost:3000"
+variables:
+  baseUrl: http://localhost:3000
+  userId: "1234567890"
+  productId: ""
+  orderId: ""
