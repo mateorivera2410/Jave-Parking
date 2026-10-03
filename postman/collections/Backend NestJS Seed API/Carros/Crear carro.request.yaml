@@ -1,0 +1,15 @@
+$kind: http-request
+url: "{{baseUrl}}/users"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "id": "12345678",
+      "name": "Mateo Rivera",
+      "email": "mateo@test.com",
+      "phone": "3001234567"
+    }
+order: 229108528968102
