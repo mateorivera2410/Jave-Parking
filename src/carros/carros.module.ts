@@ -4,6 +4,7 @@ import { CarrosService } from './services/carros.service';
 import { CarrosController } from './controllers/carros.controller';
 import { Carro } from './entities/carro.entity';
 import { User } from '../users/entities/user.entity';
+import { Pago } from '../pagos/entities/pago.entity';
 
 /**
  * =====================================================================
@@ -17,7 +18,7 @@ import { User } from '../users/entities/user.entity';
  * =====================================================================
  */
 @Module({
-  imports: [TypeOrmModule.forFeature([Carro, User])],
+  imports: [TypeOrmModule.forFeature([Carro, User, Pago])],
   controllers: [CarrosController],
   providers: [CarrosService],
 })

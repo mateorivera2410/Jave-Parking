@@ -23,6 +23,7 @@ import { CreateCarroDto } from '../dto/create-carro.dto';
 import { UpdateCarroDto } from '../dto/update-carro.dto';
 import { Carro } from '../entities/carro.entity';
 import { User } from '../../users/entities/user.entity';
+import { Pago } from '../../pagos/entities/pago.entity';
 
 @Injectable() // Nest crea una sola instancia y la comparte
 export class CarrosService {
@@ -33,6 +34,8 @@ export class CarrosService {
     private readonly carrosRepository: Repository<Carro>,
     @InjectRepository(User)
     private readonly usersRepository: Repository<User>,
+    @InjectRepository(Pago)
+    private readonly pagosRepository: Repository<Pago>,
   ) {}
 
   /**
@@ -112,6 +115,17 @@ export class CarrosService {
    */
   async remove(placa: string): Promise<void> {
     const carro = await this.findOne(placa);
+
+    // No se deja borrar un vehículo que ya tenga facturas (RESTRICT en Pago)
+    const tieneFacturas = await this.pagosRepository.existsBy({
+      placa: carro.placa,
+    });
+    if (tieneFacturas) {
+      throw new ConflictException(
+        `No se puede borrar el vehículo ${carro.placa} porque tiene facturas registradas`,
+      );
+    }
+
     await this.carrosRepository.remove(carro); // DELETE FROM carros WHERE placa=...
   }
 
