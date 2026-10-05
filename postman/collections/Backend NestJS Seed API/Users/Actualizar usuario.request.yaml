@@ -1,5 +1,5 @@
 $kind: http-request
-url: "{{baseUrl}}/users/{{userId}}"
+url: "{{baseUrl}}/users/23456789"
 method: PUT
 headers:
   Content-Type: application/json
@@ -7,7 +7,6 @@ body:
   type: json
   content: |-
     {
-      "name": "Usuario de prueba actualizado",
-      "age": 26
+      "isInside": true
     }
 order: 4000

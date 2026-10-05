@@ -5,11 +5,5 @@ headers:
   Content-Type: application/json
 body:
   type: json
-  content: |-
-    {
-      "id": "12345678",
-      "name": "Mateo Rivera",
-      "email": "mateo@test.com",
-      "phone": "3001234567"
-    }
+  content: '{ "id": "45678902", "name": "luis", "email": "luis@test.com", "phone": "3201112234" }'
 order: 1000

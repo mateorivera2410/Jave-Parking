@@ -1,0 +1,4 @@
+$kind: http-request
+url: "   {{baseUrl}}/parqueaderos"
+method: GET
+order: 4232648515731203

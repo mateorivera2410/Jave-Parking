@@ -1,0 +1,4 @@
+$kind: http-request
+url: "{{baseUrl}}/pagos/1/salida"
+method: PUT
+order: 4422443424150376

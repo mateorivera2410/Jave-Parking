@@ -1,0 +1,7 @@
+$kind: http-request
+url: "{{baseUrl}}/parqueaderos/1"
+method: PUT
+body:
+  type: json
+  content: '  { "tarifa": 3500 }'
+order: 4493183574661960

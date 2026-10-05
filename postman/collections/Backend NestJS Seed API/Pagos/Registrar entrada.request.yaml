@@ -1,0 +1,7 @@
+$kind: http-request
+url: "{{baseUrl}}/pagos"
+method: POST
+body:
+  type: json
+  content: '  { "placa": "ABC123", "parqueaderoId": 1 }'
+order: 1791162345369

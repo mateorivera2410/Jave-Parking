@@ -1,15 +1,11 @@
 $kind: http-request
-url: "{{baseUrl}}/users"
+url: "{{baseUrl}}/carros"
 method: POST
 headers:
   Content-Type: application/json
 body:
   type: json
-  content: |-
-    {
-      "id": "12345678",
-      "name": "Mateo Rivera",
-      "email": "mateo@test.com",
-      "phone": "3001234567"
-    }
+  content: "{ \"placa\": \"ABC123\", \"userId\": \"45678902\" }\r
+
+    \r\n"
 order: 229108528968102

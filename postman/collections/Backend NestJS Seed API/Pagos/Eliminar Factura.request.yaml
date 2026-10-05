@@ -1,0 +1,4 @@
+$kind: http-request
+url: "{{baseUrl}}/pagos/1"
+method: DELETE
+order: 4432236251564871

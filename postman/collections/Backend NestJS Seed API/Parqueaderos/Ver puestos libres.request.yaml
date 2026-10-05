@@ -1,0 +1,6 @@
+$kind: http-request
+url: "{{baseUrl}}/parqueaderos?ocupado=false"
+method: GET
+queryParams:
+  ocupado: "false"
+order: 4459481135787564

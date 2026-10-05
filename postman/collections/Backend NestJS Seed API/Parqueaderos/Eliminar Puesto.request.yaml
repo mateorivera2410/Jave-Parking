@@ -1,0 +1,4 @@
+$kind: http-request
+url: "{{baseUrl}}/parqueaderos/1"
+method: DELETE
+order: 4502043496830210

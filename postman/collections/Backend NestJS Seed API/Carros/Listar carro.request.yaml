@@ -1,4 +1,4 @@
 $kind: http-request
-url: "{{baseUrl}}/users"
+url: "{{baseUrl}}/carros"
 method: GET
 order: 249756701530067

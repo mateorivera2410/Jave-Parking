@@ -1,7 +1,7 @@
 $kind: http-request
-url: "{{baseUrl}}/users"
+url: "{{baseUrl}}/pagos"
 method: GET
 body:
   type: json
   content: ""
-order: 2000
+order: 3844204424589006

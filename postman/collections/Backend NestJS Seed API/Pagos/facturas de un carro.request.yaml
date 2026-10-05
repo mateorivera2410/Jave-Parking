@@ -1,0 +1,6 @@
+$kind: http-request
+url: "{{baseUrl}}/pagos?placa=ABC123"
+method: GET
+queryParams:
+  placa: ABC123
+order: 3877178614331604
