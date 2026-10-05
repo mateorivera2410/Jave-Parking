@@ -1,3 +1,0 @@
-$kind: collection
-description: "Rama 3 + Rama 4 filtros: ?status=PENDING&userId=1234567890. Relaciones User-Order-OrderItem-Product con transacción."
-order: 3000

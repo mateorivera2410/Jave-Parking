@@ -20,7 +20,6 @@ import {
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateCarroDto } from '../dto/create-carro.dto';
-import { UpdateCarroDto } from '../dto/update-carro.dto';
 import { Carro } from '../entities/carro.entity';
 import { User } from '../../users/entities/user.entity';
 import { Pago } from '../../pagos/entities/pago.entity';
@@ -86,26 +85,6 @@ export class CarrosService {
     return carro;
   }
 
-  /**
-   * Cambiar el dueño de un vehículo
-   * - Primero busca el vehículo (si no existe, 404)
-   * - Si mandan un nuevo dueño, verifica que exista (404)
-   * - Object.assign copia los campos nuevos y save() hace UPDATE
-   * - Al final lo vuelve a buscar para responder con todos sus datos
-   */
-  async update(placa: string, updateCarroDto: UpdateCarroDto): Promise<Carro> {
-    const carro = await this.findOne(placa); // reutiliza la validación 404
-
-    // Solo si mandan un dueño nuevo y es distinto al actual, verifica que exista
-    if (updateCarroDto.userId && updateCarroDto.userId !== carro.userId) {
-      await this.ensureUserExists(updateCarroDto.userId);
-    }
-
-    Object.assign(carro, updateCarroDto);
-    await this.carrosRepository.save(carro);
-
-    return this.findOne(carro.placa);
-  }
 
   /**
    * Eliminar un vehículo

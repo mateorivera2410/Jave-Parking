@@ -1,6 +1,0 @@
-$kind: http-request
-url: "{{baseUrl}}/orders?status=PENDING"
-method: GET
-queryParams:
-  status: PENDING
-order: 9000

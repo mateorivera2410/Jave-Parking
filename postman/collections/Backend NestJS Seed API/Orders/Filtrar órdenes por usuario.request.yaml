@@ -1,6 +1,0 @@
-$kind: http-request
-url: "{{baseUrl}}/orders?userId={{userId}}"
-method: GET
-queryParams:
-  userId: "{{userId}}"
-order: 10000
