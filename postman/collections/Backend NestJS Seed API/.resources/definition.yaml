@@ -1,7 +1,4 @@
 $kind: collection
-description: "Colección didáctica. Rama 1: Users. Rama 2: + Products. Rama 3: + Orders con relaciones. Rama 4: + Filtros simples vía query params (QueryBuilder). Usa variables baseUrl, userId, productId, orderId. BaseUrl http://localhost:3000"
+description: "Jave Parking API. Carpetas: Users (estudiantes), Carros (placas), Parqueaderos (puestos) y Pagos (entrada, salida y cobro por minuto). Cambia baseUrl a http://IP_DE_AWS:3000 para probar el servidor."
 variables:
   baseUrl: http://localhost:3000
-  userId: "1234567890"
-  productId: ""
-  orderId: ""

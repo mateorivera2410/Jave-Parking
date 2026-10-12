@@ -1,7 +1,7 @@
 {
-  "name": "backend-nestjs-seed",
+  "name": "jave-parking-backend",
   "version": "0.0.1",
-  "description": "Seed base NestJS + TypeORM + SQLite/Postgres - estructura clonada de NutriFit",
+  "description": "Backend de Jave Parking (parqueadero de la Javeriana Cali) - NestJS + TypeORM + SQLite/Postgres",
   "author": "",
   "private": true,
   "license": "UNLICENSED",
