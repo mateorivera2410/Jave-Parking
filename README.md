@@ -193,6 +193,8 @@ La colección de Postman está en `postman/collections/`, con una carpeta por m�
 
 La API corre en una instancia **EC2 t3.micro** con **Amazon Linux 2023**, Node 20 y **PM2**, que la mantiene encendida y la arranca sola si el servidor se reinicia. El grupo de seguridad abre el puerto `22` (SSH, solo desde nuestra IP) y el `3000` (API, para todos).
 
+**API en línea:** [http://18.117.92.88:3000/users](http://18.117.92.88:3000/users)
+
 Para subir cambios al servidor:
 
 ```bash
