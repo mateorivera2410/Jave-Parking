@@ -6,9 +6,10 @@
  * petición y este Service habla con la BD.
  * Controller = entra, Service = piensa, Repository = guarda.
  *
- * Usa dos repositorios:
+ * Usa tres repositorios:
  * - Repository<Carro>: para guardar y buscar vehículos.
- * - Repository<User>: solo para revisar que el dueño exista (la FK).
+ * - Repository<User>:  solo para revisar que el dueño exista (la FK).
+ * - Repository<Pago>:  solo para no borrar carros que tengan facturas.
  * =====================================================================
  */
 
@@ -26,8 +27,8 @@ import { Pago } from '../../pagos/entities/pago.entity';
 
 @Injectable() // Nest crea una sola instancia y la comparte
 export class CarrosService {
-  // Nest nos da los dos repositorios automáticamente, porque en
-  // carros.module.ts vamos a poner TypeOrmModule.forFeature([Carro, User])
+  // Nest nos da los tres repositorios automáticamente, porque en
+  // carros.module.ts pusimos TypeOrmModule.forFeature([Carro, User, Pago])
   constructor(
     @InjectRepository(Carro)
     private readonly carrosRepository: Repository<Carro>,
@@ -73,7 +74,7 @@ export class CarrosService {
    * Buscar un vehículo por su placa
    * Pasa la placa a mayúsculas para que "abc123" encuentre "ABC123"
    * Si no existe → 404
-   * Este método lo reusan create(), update() y remove()
+   * Este método lo reusan create() y remove()
    */
   async findOne(placa: string): Promise<Carro> {
     const carro = await this.carrosRepository.findOneBy({
@@ -85,12 +86,11 @@ export class CarrosService {
     return carro;
   }
 
-
   /**
    * Eliminar un vehículo
    * Aquí sí es un DELETE real (carros no tiene isActive).
-   * Cuando programemos pagos, agregaremos aquí una validación para no
-   * borrar vehículos que ya tengan pagos (RESTRICT).
+   * Si el vehículo ya tiene facturas, NO se deja borrar (409), porque
+   * se perdería el historial de pagos (RESTRICT en Pago).
    */
   async remove(placa: string): Promise<void> {
     const carro = await this.findOne(placa);

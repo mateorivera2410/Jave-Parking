@@ -1,10 +1,5 @@
 import { Transform } from 'class-transformer';
-import {
-  IsEmail,
-  IsString,
-  Length,
-  Matches,
-} from 'class-validator';
+import { IsEmail, IsString, Length, Matches } from 'class-validator';
 /**
  * CreateUserDto — Datos que se piden para registrar un usuario.
  * Si algún campo no cumple, Nest responde 400 sin tocar la BD.

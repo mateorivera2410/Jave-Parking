@@ -13,6 +13,7 @@ import { Pago } from '../pagos/entities/pago.entity';
  * - imports:     registra las tablas que usa el servicio:
  *                · Carro → la tabla "carros" (se crea en la BD)
  *                · User  → solo para revisar que el dueño exista
+ *                · Pago  → solo para no borrar carros con facturas
  * - controllers: las rutas HTTP (/carros).
  * - providers:   la lógica de negocio (CarrosService).
  * =====================================================================
