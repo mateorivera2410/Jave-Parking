@@ -110,8 +110,9 @@ export class PagosService {
    * SALIDA — El carro sale y paga
    * 1. Busca la factura (404) y revisa que no haya salido ya (409)
    * 2. Calcula los minutos: un minuto empezado se cobra completo
-   * 3. total = minutos × (tarifa por hora ÷ 60), redondeado a pesos
-   *    Ej: 3 min 43 s → 4 min; 4 × 3.500 ÷ 60 = 233,3 → $233
+   * 3. Cobro MÍNIMO de 1 hora (la tarifa); después, por minuto:
+   *    total = máximo entre (tarifa) y (minutos × tarifa ÷ 60), redondeado a pesos
+   *    Ej. con $3.000/h: 20 min → $3.000 (mínimo) · 1 h 10 min = 70 min → 70 × 3.000 ÷ 60 = $3.500
    * 4. En una transacción: cierra la factura, libera el puesto y marca
    *    al dueño como "fuera" (si no tiene otro carro adentro)
    */
@@ -130,9 +131,11 @@ export class PagosService {
     const milisegundos = horaSalida.getTime() - pago.horaEntrada.getTime();
     const minutos = Math.max(1, Math.ceil(milisegundos / 60000));
 
-    // 3. Calcular el total con la tarifa del puesto
+    // 3. Calcular el total con la tarifa del puesto:
+    //    se cobra por minuto, pero como mínimo 1 hora completa (la tarifa)
     const parqueadero = await this.findParqueadero(pago.parqueaderoId);
-    const total = Math.round((minutos * parqueadero.tarifa) / 60);
+    const porMinutos = Math.round((minutos * parqueadero.tarifa) / 60);
+    const total = Math.max(parqueadero.tarifa, porMinutos);
 
     // Dueño del carro, para marcarlo "fuera" al final
     const carro = await this.carrosRepository.findOneBy({ placa: pago.placa });

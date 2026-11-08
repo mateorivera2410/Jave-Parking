@@ -17,7 +17,7 @@ Proyecto del curso **Plataformas Computacionales** (2026-2), construido sobre el
 | **Users** | Estudiantes registrados con su código estudiantil. |
 | **Carros** | Placas que registra cada estudiante (formato `ABC123`). |
 | **Parqueaderos** | Puestos del parqueadero, con su tarifa por hora y si están ocupados. |
-| **Pagos** | Facturas: entrada de un carro a un puesto, salida y cobro por minuto. |
+| **Pagos** | Facturas: entrada de un carro a un puesto, salida y cobro (mínimo 1 hora, después por minuto). |
 
 ## Tecnologías
 
@@ -127,14 +127,16 @@ erDiagram
 
 La transacción hace que los cambios se guarden **todos o ninguno**: si algo falla a la mitad, no queda una factura abierta con el puesto libre ni al revés.
 
-**El cobro es por minuto:**
+**El cobro tiene un mínimo de 1 hora y después es por minuto:**
 
 ```
 minutos = minutos que estuvo adentro, redondeados hacia arriba (mínimo 1)
-total   = minutos × tarifa por hora ÷ 60   (redondeado a pesos)
+total   = el mayor entre: tarifa por hora  y  minutos × tarifa por hora ÷ 60   (redondeado a pesos)
 ```
 
-Ejemplo: 3 min 43 s se cobran como 4 min. Con tarifa de $3.500 por hora: 4 × 3.500 ÷ 60 = **$233**.
+Ejemplos con la tarifa de $3.000 por hora:
+- 20 minutos → por minutos serían $1.000, pero el mínimo es 1 hora → **$3.000**.
+- 1 h 10 min (70 min) → 70 × 3.000 ÷ 60 = **$3.500**.
 
 Las horas se guardan en UTC y se muestran en hora de Colombia (`-05:00`).
 
