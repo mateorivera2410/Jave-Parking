@@ -6,7 +6,9 @@ import { IsEmail, IsString, Length, Matches } from 'class-validator';
  */
 export class CreateUserDto {
   @IsString()
-  @Matches(/^\d{8}$/) // Código estudiantil: exactamente 8 dígitos.
+  @Matches(/^\d{6,10}$/, {
+    message: 'El código estudiantil debe tener solo números (entre 6 y 10)',
+  }) // Código estudiantil: solo números, de 6 a 10 dígitos.
   id!: string;
 
   @IsString()

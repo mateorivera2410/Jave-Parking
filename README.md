@@ -36,7 +36,7 @@ erDiagram
   parqueaderos ||--o{ pagos : recibe
 
   users {
-    varchar id PK "código estudiantil, 8 dígitos"
+    varchar id PK "código estudiantil, 6 a 10 dígitos"
     varchar name
     varchar email UK
     varchar phone
@@ -143,7 +143,7 @@ Las horas se guardan en UTC y se muestran en hora de Colombia (`-05:00`).
 | Código | Significa | Ejemplo |
 |---|---|---|
 | `200` / `201` | OK / creado | Listar, registrar |
-| `400` | Datos con mal formato | Código de 5 dígitos, placa `AB1234` |
+| `400` | Datos con mal formato | Código con letras o de 5 dígitos, placa `AB1234` |
 | `404` | No existe | Carro con un dueño que no existe |
 | `409` | Conflicto | Placa repetida, puesto ocupado, carro que ya está adentro |
 

@@ -9,7 +9,7 @@ import { Column, Entity, PrimaryColumn } from 'typeorm';
  */
 @Entity('users')
 export class User {
-  @PrimaryColumn({ length: 8 }) // Código estudiantil (8 dígitos, lo valida el DTO)
+  @PrimaryColumn({ length: 10 }) // Código estudiantil (6 a 10 dígitos, lo valida el DTO)
   id!: string;
 
   @Column({ length: 100 }) // Nombre del estudiante

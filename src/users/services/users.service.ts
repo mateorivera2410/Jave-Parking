@@ -39,7 +39,7 @@ export class UsersService {
    * Si algo ya existe → 409 Conflict
    */
   async create(createUserDto: CreateUserDto): Promise<User> {
-    // ¿Ya hay alguien con ese código estudiantil (8 dígitos)?
+    // ¿Ya hay alguien con ese código estudiantil?
     await this.ensureIdIsAvailable(createUserDto.id);
 
     // ¿Ya hay alguien con ese email?

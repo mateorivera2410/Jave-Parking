@@ -17,8 +17,9 @@ export class CreateCarroDto {
   placa!: string;
 
   @IsString()
-  @Matches(/^\d{8}$/, {
-    message: 'El userId debe ser un código estudiantil de 8 dígitos',
+  @Matches(/^\d{6,10}$/, {
+    message:
+      'El userId debe ser un código estudiantil (solo números, de 6 a 10)',
   }) // Código estudiantil del dueño (debe existir en users)
   userId!: string;
 }
